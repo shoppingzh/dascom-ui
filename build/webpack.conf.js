@@ -1,5 +1,6 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 
 module.exports = {
   mode: 'production',
@@ -28,10 +29,11 @@ module.exports = {
       }
     }, {
       test: /\.s[ac]ss$/,
-      use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+      use: ['css-loader', 'postcss-loader', 'sass-loader']
     }]
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new ProgressBarPlugin()
   ]
 }
