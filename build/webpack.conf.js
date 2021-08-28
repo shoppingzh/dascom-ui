@@ -21,15 +21,17 @@ module.exports = {
   module: {
     rules: [{
       test: /\.vue$/,
-      loader: 'vue-loader',
-      options: {
-        compilerOptions: {
-          preserveWhitespace: false
+      use: {
+        loader: 'vue-loader',
+        options: {
+          compilerOptions: {
+            preserveWhitespace: false
+          }
         }
       }
     }, {
       test: /\.s[ac]ss$/,
-      use: ['css-loader', 'postcss-loader', 'sass-loader']
+      use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
     }]
   },
   plugins: [

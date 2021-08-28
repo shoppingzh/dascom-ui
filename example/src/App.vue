@@ -1,28 +1,17 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div style="margin-top: 30px;width: 300px; padding: 10px 20px; color: orange; font-weight: bold; font-size: 14px; border: 1px solid #eee; border-radius: 5px; box-shadow: 2px 2px 10px rgba(200, 200, 200, .7);">
+      <ds-roll-text text="大江东去，浪淘尽，千古风流人物。故垒西边，人道是，三国周郎赤壁。" />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: 'App'
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "得实UI",
   "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "npx webpack --config build/webpack.conf.js"
   },
