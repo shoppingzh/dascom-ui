@@ -3,11 +3,13 @@
 </template>
 
 <script>
+import { ref } from '@vue/composition-api'
 export default {
-  name: 'DsEmpty',
-  data() {
+  name: 'DsHello',
+  setup() {
+    const message = ref('hello')
     return {
-      message: '我是<ds-empty/>组件'
+      message
     }
   }
 }

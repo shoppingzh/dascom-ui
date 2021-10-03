@@ -1,11 +1,7 @@
-import DsEmpty from '../packages/DsEmpty/index'
-import DsLazyInput from '../packages/DsLazyInput/index'
-import DsRollText from '../packages/DsRollText'
+import DsHello from '../packages/DsHello/index'
 
 function install(Vue) {
-  Vue.use(DsEmpty)
-  Vue.use(DsLazyInput)
-  Vue.use(DsRollText)
+  Vue.use(DsHello)
 }
 
 export default {

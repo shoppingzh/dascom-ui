@@ -34,6 +34,23 @@ module.exports = {
       use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
     }]
   },
+  optimization: {
+    minimize: false
+  },
+  externals: {
+    vue: {
+      root: 'Vue',
+      commonjs: 'vue',
+      commonjs2: 'vue',
+      amd: 'vue'
+    },
+    '@vue/composition-api': {
+      root: 'VueCompositionAPI',
+      commonjs: '@vue/composition-api',
+      commonjs2: '@vue/composition-api',
+      amd: '@vue/composition-api'
+    }
+  },
   plugins: [
     new VueLoaderPlugin(),
     new ProgressBarPlugin()
