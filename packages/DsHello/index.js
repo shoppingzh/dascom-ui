@@ -1,7 +1,7 @@
-import DsEmpty from './main.vue'
+import Component from './main.vue'
 
-DsEmpty.install = function(Vue) {
-  Vue.component(DsEmpty.name, DsEmpty)
+Component.install = function(Vue) {
+  Vue.component(Component.name, Component)
 }
 
-export default DsEmpty
+export default Component
