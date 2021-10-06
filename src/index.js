@@ -1,6 +1,4 @@
-import Vue from 'vue'
-import DsEmpty from '../packages/DsEmpty'
-import './theme/index.scss'
+import DsEmpty from '../packages/empty'
 
 const components = [
   DsEmpty

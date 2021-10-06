@@ -1,11 +1,13 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const config = require('./config')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   mode: 'production',
   entry: {
-    app: './src/index.js'
+    index: './src/index.js'
   },
   output: {
     path: path.resolve(process.cwd(), 'lib'),
@@ -13,7 +15,7 @@ module.exports = {
     filename: 'index.js',
     library: {
       name: 'DascomUI',
-      type:'umd',
+      type: 'umd',
       export: 'default'
     },
     globalObject: 'this'
@@ -31,28 +33,24 @@ module.exports = {
       }
     }, {
       test: /\.s[ac]ss$/,
-      use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+      use: [
+        MiniCssExtractPlugin.loader,
+        'css-loader',
+        'sass-loader'
+      ]
     }]
   },
   optimization: {
     minimize: false
   },
   externals: {
-    vue: {
-      root: 'Vue',
-      commonjs: 'vue',
-      commonjs2: 'vue',
-      amd: 'vue'
-    },
-    '@vue/composition-api': {
-      root: 'VueCompositionAPI',
-      commonjs: '@vue/composition-api',
-      commonjs2: '@vue/composition-api',
-      amd: '@vue/composition-api'
-    }
+    ...config.externals
   },
   plugins: [
     new VueLoaderPlugin(),
-    new ProgressBarPlugin()
+    new ProgressBarPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    })
   ]
 }
