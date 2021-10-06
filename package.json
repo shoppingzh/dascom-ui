@@ -1,6 +1,6 @@
 {
   "name": "dascom-ui",
-  "version": "1.0.10",
+  "version": "1.0.14",
   "description": "得实UI",
   "main": "lib/index.js",
   "files": [
@@ -26,7 +26,10 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "@vue/composition-api": "^1.2.2",
+    "@vue/composition-api": "^1.2.3",
     "vue": "^2.6.14"
+  },
+  "publishConfig": {
+    "registry": "http://192.168.1.33:8081/repository/npm-hosted/"
   }
 }

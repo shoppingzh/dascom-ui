@@ -1,0 +1,61 @@
+@import './var.scss';
+
+$size: (
+  mini: (
+    padding: 10px,
+    imageSize: 80px,
+    gap: 8px
+  ),
+  small: (
+    padding: 15px,
+    imageSize: 110px,
+    gap: 20px
+  ),
+  medium: (
+    padding: 20px,
+    imageSize: 160px,
+    gap: 20px
+  ),
+  large: (
+    padding: 30px,
+    imageSize: 220px,
+    gap: 20px
+  ),
+  xlarge: (
+    padding: 40px,
+    imageSize: 300px,
+    gap: 20px
+  )
+);
+
+.ds-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  &__image {
+    width: 160px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__description {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #909399;
+  }
+}
+
+@each $key, $value in $size {
+  .ds-empty--#{$key} {
+    padding: map-get($map: $value, $key: padding) 0;
+    .ds-empty__image {
+      width: map-get($map: $value, $key: imageSize);
+    }
+    .ds-empty__description {
+      margin-top: map-get($map: $value, $key: gap);
+    }
+  }
+}

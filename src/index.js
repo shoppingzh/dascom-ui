@@ -1,9 +1,15 @@
-import DsHello from '../packages/DsHello/index'
+import Vue from 'vue'
 import DsEmpty from '../packages/DsEmpty'
+import './theme/index.scss'
+
+const components = [
+  DsEmpty
+]
 
 function install(Vue) {
-  Vue.use(DsHello)
-  Vue.use(DsEmpty)
+  components.forEach(component => {
+    Vue.use(component)
+  })
 }
 
 export default {

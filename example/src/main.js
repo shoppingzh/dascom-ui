@@ -1,10 +1,9 @@
 import Vue from 'vue'
-import App from './App.vue'
-import DascomUI from 'dascom-ui'
-import VueCompositionAPI from '@vue/composition-api'
+// plugins
+import '@/plugins/composition-api'
+import '@/plugins/dascom-ui'
 
-Vue.use(DascomUI)
-Vue.use(VueCompositionAPI)
+import App from './App.vue'
 
 Vue.config.productionTip = false
 
