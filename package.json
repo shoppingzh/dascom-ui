@@ -10,8 +10,8 @@
   ],
   "scripts": {
     "build": "npx webpack --config build/webpack.conf.js",
-    "build:theme": "gulp compile --gulpfile build/theme.gulpfile.js",
-    "build:base": "gulp compile --gulpfile build/base.gulpfile.js",
+    "build:theme": "gulp build --gulpfile build/gulp.theme.js",
+    "build:base": "gulp build --gulpfile build/gulp.base.js",
     "lint": "eslint build/**/*.js src/**/*.js packages/**/*.js"
   },
   "repository": "git@github.com:shoppingzh/dascom-ui.git",

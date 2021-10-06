@@ -4,7 +4,7 @@ const sass = require('gulp-sass')(require('sass'))
 const cssmin = require('gulp-cssmin')
 const autoprefixer = require('gulp-autoprefixer')
 
-function compile(done) {
+function build(done) {
   src(path.resolve(__dirname, '../src/theme/*.scss'))
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(autoprefixer({
@@ -16,5 +16,5 @@ function compile(done) {
 }
 
 module.exports = {
-  compile
+  build
 }

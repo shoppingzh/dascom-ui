@@ -1,5 +1,5 @@
 const path = require('path')
-const { src, dest } = require('gulp')
+const { src, dest, series } = require('gulp')
 
 function compile(done) {
   src(path.resolve(__dirname, '../src/**/*.js'), {
@@ -12,6 +12,12 @@ function compile(done) {
   done()
 }
 
+function copyTheme(done) {
+  src(path.resolve(__dirname, '../src/theme/**'))
+    .pipe(dest(path.resolve(__dirname, '../lib/theme/src')))
+  done()
+}
+
 module.exports = {
-  compile
+  build: series(compile, copyTheme)
 }
