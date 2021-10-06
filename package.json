@@ -4,11 +4,14 @@
   "description": "得实UI",
   "main": "lib/index.js",
   "files": [
-    "lib"
+    "src",
+    "lib",
+    "packages"
   ],
   "scripts": {
     "build": "npx webpack --config build/webpack.conf.js",
     "build:theme": "gulp compile --gulpfile build/theme.gulpfile.js",
+    "build:base": "gulp compile --gulpfile build/base.gulpfile.js",
     "lint": "eslint build/**/*.js src/**/*.js packages/**/*.js"
   },
   "repository": "git@github.com:shoppingzh/dascom-ui.git",

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import DascomUI from 'dascom-ui'
-import 'dascom-ui/lib/theme/index.css'
+import './theme.scss'
 
 Vue.use(DascomUI)
 

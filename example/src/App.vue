@@ -3,18 +3,18 @@
     <ds-empty size="small" description="什么都没有哦">
       {{ hello }}
     </ds-empty>
-    {{ hello }}
   </div>
 </template>
 
 <script>
-import { ref } from '@vue/composition-api'
+import useNow from 'dascom-ui/lib/hooks/useNow'
 
 export default {
   name: 'App',
   setup() {
+    const { datetimeDesc } = useNow()
     return {
-      hello: ref('hello')
+      hello: datetimeDesc
     }
   }
 }
