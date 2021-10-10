@@ -1,20 +1,22 @@
 <template>
   <div id="app">
-    <ds-empty size="small" description="什么都没有哦">
-      {{ hello }}
-    </ds-empty>
+    <ds-pdf src="/1.pdf">
+      <template #default="{ pdf }">
+        <ds-pdf-page
+          v-for="number in pdf.numPages"
+          :key="number"
+          :number="number" />
+      </template>
+    </ds-pdf>
   </div>
 </template>
 
 <script>
-import useNow from 'dascom-ui/lib/hooks/useNow'
 
 export default {
   name: 'App',
   setup() {
-    const { datetimeDesc } = useNow()
     return {
-      hello: datetimeDesc
     }
   }
 }

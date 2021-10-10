@@ -1,7 +1,11 @@
 import DsEmpty from '../packages/empty'
+import DsPdf from '../packages/pdf'
+import DsPdfPage from '../packages/pdf-page'
 
 const components = [
-  DsEmpty
+  DsEmpty,
+  DsPdf,
+  DsPdfPage
 ]
 
 function install(Vue) {

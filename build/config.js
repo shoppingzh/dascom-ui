@@ -10,6 +10,12 @@ const externals = {
     commonjs: '@vue/composition-api',
     commonjs2: '@vue/composition-api',
     amd: '@vue/composition-api'
+  },
+  'pdfjs-dist': {
+    root: 'pdfjs-dist',
+    commonjs: 'pdfjs-dist',
+    commonjs2: 'pdfjs-dist',
+    amd: 'pdfjs-dist'
   }
 }
 

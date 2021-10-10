@@ -52,5 +52,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css'
     })
-  ]
+  ],
+  watch: true
 }
