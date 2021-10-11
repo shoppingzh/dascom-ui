@@ -1,9 +1,7 @@
 import Vue from 'vue'
-import * as PDFJS from 'pdfjs-dist'
-import PDFJSWorker from 'pdfjs-dist/build/pdf.worker.entry'
-PDFJS.GlobalWorkerOptions.workerSrc = PDFJSWorker
 // plugins
 import '@/plugins/composition-api'
+import '@/plugins/pdfjs'
 import '@/plugins/dascom-ui'
 
 import App from './App.vue'

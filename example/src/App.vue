@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    {{ hello }}
     <ds-pdf src="/1.pdf">
       <template #default="{ pdf }">
         <ds-pdf-page
@@ -12,11 +13,13 @@
 </template>
 
 <script>
+import { ref } from '@vue/composition-api'
 
 export default {
   name: 'App',
   setup() {
     return {
+      hello: ref('hello')
     }
   }
 }
