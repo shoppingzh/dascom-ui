@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { reactive, ref, provide } from '@vue/composition-api'
+import { provide } from '@vue/composition-api'
 import usePdf from './usePdf'
 import Error from './Error.vue'
 
@@ -26,7 +26,6 @@ export default {
     src: { type: [String, File, Blob], required: true }
   },
   setup(props, ctx) {
-
     const { pdf, loading, loadError, load } = usePdf(props.src)
 
     load().then(doc => {
