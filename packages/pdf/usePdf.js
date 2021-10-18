@@ -1,5 +1,7 @@
 import * as PDFJS from 'pdfjs-dist'
-import { ref } from '@vue/composition-api'
+import PDFJSWorker from 'pdfjs-dist/es5/build/pdf.worker.entry'
+import { ref, onUnmounted } from '@vue/composition-api'
+PDFJS.GlobalWorkerOptions.workerSrc = PDFJSWorker
 
 export default function(url) {
   const pdf = ref(null)
@@ -21,6 +23,14 @@ export default function(url) {
       }
     })
   }
+
+  const destroy = () => {
+    pdf.value && pdf.value.destroy()
+  }
+
+  onUnmounted(() => {
+    destroy()
+  })
 
   return {
     pdf,

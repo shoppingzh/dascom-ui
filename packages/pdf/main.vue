@@ -8,7 +8,9 @@
       </div>
     </template>
     <template v-else>
-      <Error v-if="loadError" />
+      <slot v-if="loadError" name="error" :error="loadError">
+        <Error />
+      </slot>
       <slot v-else-if="pdf" :pdf="pdf" />
     </template>
   </div>
@@ -28,20 +30,25 @@ export default {
   setup(props, ctx) {
     const { pdf, loading, loadError, load } = usePdf(props.src)
 
-    load().then(doc => {
-      ctx.emit('load-success', doc)
-    }).catch(err => {
-      ctx.emit('load-error', err)
-    })
+    const handleLoad = async() => {
+      try {
+        const doc = await load()
+        ctx.emit('load-success', doc)
+      } catch (err) {
+        ctx.emit('load-error', err)
+      }
+    }
 
     provide('pdf', pdf)
+
+    handleLoad()
 
     return {
       pdf,
       loading,
       loadError
     }
-  } 
+  }
 }
 </script>
 

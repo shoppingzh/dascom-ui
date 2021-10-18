@@ -1,37 +1,19 @@
 <template>
   <div id="app">
-    {{ hello }}
-    {{ show }}
-    <ds-empty />
-    <ds-pdf src="/1.pdf">
-      <template #default="{ pdf }">
-        <ds-pdf-page
-          v-for="number in pdf.numPages"
-          :key="number"
-          :number="number" />
-      </template>
-    </ds-pdf>
+    <router-view />
   </div>
 </template>
 
 <script>
-import { ref } from '@vue/composition-api'
 
 export default {
-  name: 'App',
-  setup() {
-    const show = ref(false)
-    setTimeout(() => {
-      show.value = true
-    }, 3000)
-    return {
-      hello: 'hello',
-      show
-      // hello: ref('hello')
-    }
-  }
+  name: 'App'
 }
 </script>
 
-<style>
+<style scoped>
+  .ds-pdf-page {
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+  }
 </style>

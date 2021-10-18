@@ -43,8 +43,8 @@
     "registry": "http://192.168.1.33:8081/repository/npm-hosted/"
   },
   "peerDependencies": {
-    "@vue/composition-api": "^1.2.4",
     "pdfjs-dist": "^2.10.377",
+    "video.js": "^7.15.4",
     "vue": "^2.6.14"
   }
 }

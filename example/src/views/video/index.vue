@@ -1,0 +1,95 @@
+<template>
+  <div class="tw-relative">
+    <ds-video
+      ref="player"
+      src="http://192.168.1.43/api/base/resource/view/222378321961291776"
+      poster="http://192.168.1.43/api/base/resource/view/168406511003983872"
+      caption="http://192.168.1.43/api/base/resource/view/222030015359881216"
+      :controls="controls"
+      :loop="loop"
+      playsinline
+      :options="{ fill: true, fluid: false, playbackRates: [1, 1.5, 2] }" />
+    <div class="settings tw-p-3">
+      <div class="tw-mt-4">
+        <el-form size="small" label-width="100px" label-position="left" label-suffix="：">
+          <el-form-item label="基操">
+            <el-button size="small" type="primary" @click="play">播放</el-button>
+            <el-button size="small" type="warning" @click="pause">暂停</el-button>
+            <el-button size="small" type="danger" @click="stop">停止</el-button>
+          </el-form-item>
+          <el-form-item label="全屏操作">
+            <el-radio-group v-model="fullscreenType">
+              <el-radio :label="0">真·全屏</el-radio>
+              <el-radio :label="1">网页全屏</el-radio>
+            </el-radio-group>
+          </el-form-item>
+          <el-form-item label="控件栏">
+            <el-radio-group v-model="controls">
+              <el-radio :label="true">显示</el-radio>
+              <el-radio :label="false">不显示</el-radio>
+            </el-radio-group>
+          </el-form-item>
+          <el-form-item label="洗脑循环">
+            <el-switch v-model="loop" />
+          </el-form-item>
+        </el-form>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { ref } from '@vue/composition-api'
+
+export default {
+  setup() {
+    const player = ref(null)
+    const controls = ref(true)
+    const loop = ref(false)
+    const fullscreenType = ref(0)
+
+    const play = () => {
+      player.value.play()
+    }
+    const pause = () => {
+      player.value.pause()
+    }
+    const stop = () => {
+      player.value.stop()
+    }
+    const fullscreen = () => {
+      player.value.fullscreen(true)
+    }
+    const fakeFullscreen = () => {
+      player.value.player.enterFullWindow()
+    }
+
+    return {
+      player,
+      controls,
+      loop,
+      fullscreenType,
+
+      play,
+      pause,
+      stop,
+      fullscreen,
+      fakeFullscreen
+    }
+  }
+}
+</script>
+
+<style scoped>
+  .ds-video {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 500px;
+  }
+  .settings {
+    padding-top: 520px;
+  }
+</style>
