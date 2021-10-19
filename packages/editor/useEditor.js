@@ -1,7 +1,7 @@
 import { ref, onUnmounted, watch } from '@vue/composition-api'
 import tinymce from 'tinymce'
 import { merge } from 'lodash'
-import defaultOptions from './options/default'
+import defaultOptions from './options'
 
 export default function(content, height, placeholder, options) {
   const textarea = ref(null)

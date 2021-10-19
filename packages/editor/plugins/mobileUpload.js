@@ -22,7 +22,8 @@ tinymce.PluginManager.add('mobileupload', (editor, url) => {
       const accept = getAccept(type)
       const capture = immediate ? getCapture(type) : null
       const files = await chooseFile(accept, capture)
-      const { url } = await uploader.value(files[0])
+      // const { url } = await uploader.value(files[0])
+      const url = URL.createObjectURL(files[0])
       let el = null
       if (type === 'image') {
         el = `<img src="${url}" style="width: 100%;">`

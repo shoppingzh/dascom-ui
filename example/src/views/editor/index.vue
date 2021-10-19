@@ -4,7 +4,7 @@
       v-model="value"
       placeholder="请输入内容"
       :height="500"
-      :options="{ toolbar: '' }" />
+      :options="{ }" />
     <!-- <div class="tw-py-5">
       <el-input v-model="value" type="textarea" :rows="10" />
     </div> -->
