@@ -14,9 +14,10 @@ const components = [
   DsPdfContent
 ]
 
-function install(Vue) {
+function install(Vue, componentOptions) {
+  componentOptions = componentOptions || {}
   components.forEach(component => {
-    Vue.use(component)
+    Vue.use(component, componentOptions[component.name])
   })
 }
 

@@ -1,5 +1,8 @@
 module.exports = {
   configureWebpack: {
+    externals: {
+      tinymce: 'tinyMCE'
+    },
     optimization: {
       splitChunks: {
         cacheGroups: {

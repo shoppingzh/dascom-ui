@@ -1,4 +1,5 @@
 const externals = {
+  // 基础设施
   vue: {
     root: 'Vue',
     commonjs: 'vue',
@@ -17,6 +18,7 @@ const externals = {
     commonjs2: 'lodash',
     amd: 'lodash'
   },
+  // 第三方库
   'pdfjs-dist': {
     root: 'pdfjs-dist',
     commonjs: 'pdfjs-dist',
@@ -40,6 +42,12 @@ const externals = {
     commonjs: 'video.js/dist/lang/zh-CN.json',
     commonjs2: 'video.js/dist/lang/zh-CN.json',
     amd: 'video.js/dist/lang/zh-CN.json'
+  },
+  'tinymce': {
+    root: 'tinymce',
+    commonjs: 'tinymce',
+    commonjs2: 'tinymce',
+    amd: 'tinymce'
   }
 }
 

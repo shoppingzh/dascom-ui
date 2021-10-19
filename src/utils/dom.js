@@ -38,3 +38,23 @@ export function isInContainer(el, container) {
   const srcRect = el.getBoundingClientRect()
   return srcRect.top <= containerRect.bottom && srcRect.bottom >= containerRect.top
 }
+
+/**
+ * 选择文件
+ */
+export function chooseFile(accept, capture) {
+  return new Promise((resolve, reject) => {
+    const ele = document.createElement('input')
+    ele.type = 'file'
+    if (accept) ele.accept = accept
+    if (capture) ele.setAttribute('capture', capture)
+    console.log(capture)
+    ele.style.display = 'none'
+    ele.addEventListener('change', function() {
+      document.body.removeChild(ele)
+      resolve(this.files)
+    }, false)
+    document.body.appendChild(ele)
+    ele.click()
+  })
+}

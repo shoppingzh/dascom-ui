@@ -10,4 +10,7 @@ export default [{
 }, {
   path: '/pdf/page',
   component: () => import('@/views/pdf/page')
+}, {
+  path: '/editor',
+  component: () => import('@/views/editor/index')
 }]
