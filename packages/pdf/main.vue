@@ -1,5 +1,5 @@
 <template>
-  <div class="ds-pdf">
+  <div ref="el" class="ds-pdf">
     <template v-if="loading">
       <div class="ds-pdf__loading">
         <slot name="loading">
@@ -39,10 +39,9 @@ export default {
       }
     }
 
-    provide('pdf', pdf)
-
     handleLoad()
 
+    provide('pdf', pdf)
     return {
       pdf,
       loading,

@@ -20,6 +20,11 @@ module.exports = {
     },
     globalObject: 'this'
   },
+  resolve: {
+    alias: {
+      'dascom-ui': path.resolve(__dirname, '../')
+    }
+  },
   module: {
     rules: [{
       test: /\.vue$/,

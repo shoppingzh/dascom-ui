@@ -10,6 +10,7 @@ export default function(number = 1, width, scale, rotate, isRenderText) {
   })
   const layer = ref(null)
   const textLayer = ref(null)
+  const rendered = ref(false)
   const viewportScale = computed(() => {
     if (!page.value) return null
     const viewport = page.value.getViewport({ scale: 1, rotation: rotate.value })
@@ -58,6 +59,8 @@ export default function(number = 1, width, scale, rotate, isRenderText) {
   const render = () => {
     return new Promise(async(resolve, reject) => {
       try {
+        if (loading.render) return reject()
+        if (rendered.value) return resolve()
         loading.render = true
         const pageIns = page.value
         const canvas = layer.value
@@ -66,7 +69,7 @@ export default function(number = 1, width, scale, rotate, isRenderText) {
         canvas.height = renderViewport.value.height
         canvas.style.width = `${viewport.value.width}px`
         canvas.style.height = `${viewport.value.height}px`
-  
+
         await pageIns.render({
           canvasContext: ctx,
           transform: null,
@@ -81,9 +84,10 @@ export default function(number = 1, width, scale, rotate, isRenderText) {
             console.error(err)
           }
         }
-
+        rendered.value = true
         resolve()
       } catch (err) {
+        rendered.value = false
         reject(err)
       } finally {
         loading.render = false

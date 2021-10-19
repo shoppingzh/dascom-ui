@@ -1,5 +1,5 @@
 <template>
-  <div class="ds-pdf-page" :style="{ ...viewportStyle }">
+  <div ref="el" class="ds-pdf-page" :style="{ ...viewportStyle }">
     <template v-if="loading.load">
       <slot name="loading" />
     </template>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { computed, onMounted, toRefs, watch } from '@vue/composition-api'
+import { ref, computed, onMounted, toRefs, watch } from '@vue/composition-api'
 import usePdfPage from './usePdfPage'
 
 export default {
@@ -24,52 +24,63 @@ export default {
     width: { type: Number, default: null },
     scale: { type: Number, default: 1.0 },
     rotate: { type: Number, default: 0 },
-    renderText: { type: Boolean, default: false }
+    renderText: { type: Boolean, default: false },
+    lazyRender: { type: Boolean, default: false }
   },
   setup(props, ctx) {
-    const { width, scale, rotate, renderText: isRenderText } = toRefs(props)
-    const { loading, layer, textLayer, viewportScale, viewport, load, render } = usePdfPage(props.number, width, scale, rotate, isRenderText)
+    const el = ref(null)
+    const { width, scale, rotate, renderText: isRenderText, lazyRender } = toRefs(props)
+    const { loading, layer, textLayer, viewportScale, viewport, load: doLoad, render: doRender } = usePdfPage(props.number, width, scale, rotate, isRenderText)
 
     const viewportStyle = computed(() => viewport.value ? ({
       width: `${viewport.value.width}px`,
       height: `${viewport.value.height}px`
     }) : null)
 
-    const handleLoad = async() => {
+    const load = async() => {
       try {
-        const data = await load()
+        const data = await doLoad()
         ctx.emit('load-success', data)
       } catch (err) {
         ctx.emit('load-error', err)
       }
     }
 
-    const handleRender = async() => {
+    const render = async() => {
       try {
-        await render()
+        await doRender()
         ctx.emit('render-success')
       } catch (err) {
         ctx.emit('render-error', err)
       }
     }
 
+    const tryRender = () => {
+      if (lazyRender.value) return
+      render()
+    }
+
     onMounted(async() => {
-      await handleLoad()
-      handleRender()
+      await load()
+      tryRender()
     })
 
     watch([width, scale, rotate, isRenderText], () => {
-      handleRender()
+      tryRender()
     })
 
     return {
+      el,
+
       loading,
       layer,
       textLayer,
       viewportScale,
       viewport,
 
-      viewportStyle
+      viewportStyle,
+
+      render
     }
   }
 }

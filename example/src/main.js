@@ -7,6 +7,8 @@ import '@/plugins/videojs'
 import '@/plugins/element-ui'
 import '@/plugins/dascom-ui'
 
+import '@/components'
+
 import '@/styles/index.css'
 
 import router from './router'

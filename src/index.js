@@ -3,13 +3,15 @@ import DsPdf from '../packages/pdf'
 import DsPdfPage from '../packages/pdf-page'
 import DsVideo from '../packages/video'
 import DsEditor from '../packages/editor'
+import DsPdfContent from '../packages/pdf-content'
 
 const components = [
   DsEmpty,
   DsPdf,
   DsPdfPage,
   DsVideo,
-  DsEditor
+  DsEditor,
+  DsPdfContent
 ]
 
 function install(Vue) {
