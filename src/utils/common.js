@@ -1,4 +1,4 @@
-import isMobile from 'ismobilejs/dist/isMobile.min'
+import isMobile from 'ismobilejs/dist/isMobile.min.js'
 
 /**
  * 获取当前平台

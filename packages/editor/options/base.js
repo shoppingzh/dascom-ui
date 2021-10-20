@@ -3,6 +3,7 @@ import { chooseFile } from 'dascom-ui/lib/utils/dom'
 
 export default {
   plugins: 'image media link table preview fullscreen mobileupload',
+  toolbar__mode: 'floating',
   branding: false,
   language: 'zh_CN',
   file_picker_types: 'image media file',

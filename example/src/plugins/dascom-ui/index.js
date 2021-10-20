@@ -2,8 +2,7 @@ import Vue from 'vue'
 import DascomUI from 'dascom-ui'
 import './theme.scss'
 import * as fileApi from '@/api/file'
-
-Vue.use(DascomUI, {
+const options = {
   DsEditor: {
     upload: (file) => {
       return new Promise(async(resolve, reject) => {
@@ -19,6 +18,7 @@ Vue.use(DascomUI, {
       })
     }
   }
-})
+}
+Vue.use(DascomUI, options)
 
 export default DascomUI
