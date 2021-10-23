@@ -27,15 +27,22 @@ module.exports = {
   },
   module: {
     rules: [{
+      test: /\.m?(jsx?|babel|es6)$/,
+      include: process.cwd(),
+      exclude: /node_modules/,
+      loader: 'babel-loader'
+    }, {
       test: /\.vue$/,
-      use: {
-        loader: 'vue-loader',
-        options: {
-          compilerOptions: {
-            preserveWhitespace: false
+      use: [
+        {
+          loader: 'vue-loader',
+          options: {
+            compilerOptions: {
+              preserveWhitespace: false
+            }
           }
         }
-      }
+      ]
     }, {
       test: /\.s[ac]ss$/,
       use: [

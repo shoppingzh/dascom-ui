@@ -4,6 +4,8 @@ import DsPdfPage from '../packages/pdf-page'
 import DsVideo from '../packages/video'
 import DsEditor from '../packages/editor'
 import DsPdfContent from '../packages/pdf-content'
+import DsSkeleton from '../packages/skeleton'
+import DsSkeletonItem from '../packages/skeleton-item'
 
 const components = [
   DsEmpty,
@@ -11,7 +13,9 @@ const components = [
   DsPdfPage,
   DsVideo,
   DsEditor,
-  DsPdfContent
+  DsPdfContent,
+  DsSkeleton,
+  DsSkeletonItem
 ]
 
 function install(Vue, componentOptions) {

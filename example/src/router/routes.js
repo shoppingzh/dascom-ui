@@ -13,4 +13,7 @@ export default [{
 }, {
   path: '/editor',
   component: () => import('@/views/editor/index')
+}, {
+  path: '/skeleton',
+  component: () => import('@/views/skeleton/index')
 }]

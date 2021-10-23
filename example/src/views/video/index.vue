@@ -10,6 +10,7 @@
       playsinline
       :options="{ fill: true, fluid: false, playbackRates: [1, 1.5, 2] }" />
     <div class="settings tw-p-3">
+      <ds-skeleton />
       <div class="tw-mt-4">
         <el-form size="small" label-width="100px" label-position="left" label-suffix="：">
           <el-form-item label="基操">
