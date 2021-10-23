@@ -43,7 +43,7 @@ export default function(content, height, placeholder, options) {
 
   const destroy = () => {
     if (!editor.value) return
-    editor.vlaue.destroy()
+    editor.value.destroy()
   }
 
   watch(() => content.value, newVal => {

@@ -48,7 +48,6 @@ export function chooseFile(accept, capture) {
     ele.type = 'file'
     if (accept) ele.accept = accept
     if (capture) ele.setAttribute('capture', capture)
-    console.log(capture)
     ele.style.display = 'none'
     ele.addEventListener('change', function() {
       document.body.removeChild(ele)

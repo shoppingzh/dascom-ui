@@ -5,6 +5,5 @@ import isMobile from 'ismobilejs/dist/isMobile.min.js'
  * @returns app/pc
  */
 export function getPlatform() {
-  console.log(isMobile)
   return (isMobile.any || isMobile.phone) ? 'app' : 'pc'
 }
