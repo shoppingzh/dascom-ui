@@ -8,6 +8,7 @@ export default {
   language: 'zh_CN',
   file_picker_types: 'image media file',
   skin: 'dascom',
+  icons: 'dascom',
   file_picker_callback: (cb, value, meta) => {
     const filetype = meta.filetype
     chooseFile().then(files => {
