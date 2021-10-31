@@ -45,7 +45,7 @@ tinymce.PluginManager.add('mobileupload', (editor, url) => {
     }
   })
   editor.ui.registry.addButton('image', {
-    icon: 'image',
+    icon: 'picture',
     // text: '图片',
     onAction: () => {
       chooseFileAndUpload('image', false)
