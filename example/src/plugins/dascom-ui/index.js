@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import DascomUI from 'dascom-ui'
-import './theme.scss'
+// import './theme.scss'
 import * as fileApi from '@/api/file'
 const options = {
   DsEditor: {

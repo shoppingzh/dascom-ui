@@ -50,6 +50,13 @@ module.exports = {
         'css-loader',
         'sass-loader'
       ]
+    }, {
+      test: /\.svg$/,
+      use: [
+        {
+          loader: 'url-loader'
+        }
+      ]
     }]
   },
   optimization: {

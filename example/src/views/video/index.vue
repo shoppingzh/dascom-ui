@@ -2,7 +2,7 @@
   <div class="tw-relative">
     <ds-video
       ref="player"
-      src="http://192.168.1.43/api/base/resource/view/222378321961291776"
+      src="https://lf1-cdn-tos.bytescm.com/obj/cdn-static-resource/toutiao/xigua_cdn/xigua_video.mp4"
       poster="http://192.168.1.43/api/base/resource/view/168406511003983872"
       caption="http://192.168.1.43/api/base/resource/view/222030015359881216"
       :controls="controls"
@@ -10,7 +10,6 @@
       playsinline
       :options="{ fill: true, fluid: false, playbackRates: [1, 1.5, 2] }" />
     <div class="settings tw-p-3">
-      <ds-skeleton />
       <div class="tw-mt-4">
         <el-form size="small" label-width="100px" label-position="left" label-suffix="：">
           <el-form-item label="基操">

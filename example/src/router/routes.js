@@ -16,4 +16,7 @@ export default [{
 }, {
   path: '/skeleton',
   component: () => import('@/views/skeleton/index')
+}, {
+  path: '/file-thumb',
+  component: () => import('@/views/file-thumb/index')
 }]

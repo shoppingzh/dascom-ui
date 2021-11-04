@@ -48,6 +48,12 @@ const externals = {
     commonjs: 'tinymce',
     commonjs2: 'tinymce',
     amd: 'tinymce'
+  },
+  'tongpo/lib/file': {
+    root: 'tongpo/lib/file',
+    commonjs: 'tongpo/lib/file',
+    commonjs2: 'tongpo/lib/file',
+    amd: 'tongpo/lib/file'
   }
 }
 
