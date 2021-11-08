@@ -6,7 +6,6 @@ import DsEditor from '../packages/editor'
 import DsPdfContent from '../packages/pdf-content'
 import DsSkeleton from '../packages/skeleton'
 import DsSkeletonItem from '../packages/skeleton-item'
-import DsFileThumb from '../packages/file-thumb'
 
 const components = [
   DsEmpty,
@@ -16,8 +15,7 @@ const components = [
   DsEditor,
   DsPdfContent,
   DsSkeleton,
-  DsSkeletonItem,
-  DsFileThumb
+  DsSkeletonItem
 ]
 
 function install(Vue, componentOptions) {

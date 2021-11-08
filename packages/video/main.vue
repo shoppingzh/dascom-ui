@@ -23,10 +23,11 @@ export default {
     muted: { type: Boolean, default: false },
     loop: { type: Boolean, default: false },
     playsinline: { type: Boolean, default: false },
+    windowFullscreen: { type: Boolean, default: false },
     options: { type: Object, default: () => ({}) }
   },
   setup(props, ctx) {
-    const { src, poster, caption, controls, autoplay, muted, loop, playsinline, options } = toRefs(props)
+    const { src, poster, caption, controls, autoplay, muted, loop, playsinline, windowFullscreen, options } = toRefs(props)
     const {
       video,
       player,
@@ -37,7 +38,6 @@ export default {
       currentTime,
       duration,
       getRemainTime,
-      fullscreen,
       isFullscreen,
       volume
     } = useVideo(src, poster, caption, reactive({
@@ -45,7 +45,7 @@ export default {
       autoplay,
       muted,
       loop
-    }), playsinline, options)
+    }), playsinline, windowFullscreen, options)
 
     onMounted(() => {
       init().then(() => {
@@ -67,7 +67,6 @@ export default {
       currentTime,
       duration,
       getRemainTime,
-      fullscreen,
       isFullscreen,
       volume
     }

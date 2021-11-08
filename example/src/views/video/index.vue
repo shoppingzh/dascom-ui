@@ -8,6 +8,7 @@
       :controls="controls"
       :loop="loop"
       playsinline
+      :window-fullscreen="true"
       :options="{ fill: true, fluid: false, playbackRates: [1, 1.5, 2] }"
       @timeupdate="handleTimeUpdate"
       @durationchange="handleDurationChange" />
@@ -123,9 +124,9 @@ export default {
     top: 0;
     left: 0;
     right: 0;
-    height: 500px;
+    height: 300px;
   }
   .settings {
-    padding-top: 520px;
+    padding-top: 320px;
   }
 </style>

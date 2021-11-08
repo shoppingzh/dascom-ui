@@ -2,40 +2,13 @@ import { ref, computed, watch } from '@vue/composition-api'
 import videojs from 'video.js'
 import zh_CN from 'video.js/dist/lang/zh-CN.json'
 import { merge } from 'lodash/object'
+import SmartFullscreen from './smartFullscreen'
 
-export default function(src, poster, caption, nativeSettings, playsinline, options) {
+export default function(src, poster, caption, nativeSettings, playsinline, windowFullscreen, options) {
   const player = ref(null)
   const video = ref(null)
+  const smartFullscreen = ref(null)
   const sources = computed(() => typeof src.value === 'string' ? [src.value] : src.value)
-
-  const init = () => {
-    return new Promise(async(resolve, reject) => {
-      player.value = videojs(video.value, merge({}, {
-        ...nativeSettings,
-        languages: { zh_CN },
-        language: 'zh_CN',
-        fluid: true
-      }, options.value), (p) => {
-        resolve(player.value)
-      })
-      const Button = videojs.getComponent('Button')
-      console.log(Button)
-      const btn = new Button(player.value, {
-        text: 'hello',
-        clickHandler: e => {
-          console.log(e)
-        }
-      })
-      console.log(btn)
-      player.value.addChild(btn, {
-        text: '全屏'
-      })
-      if (poster.value) {
-        player.value.poster(poster.value)
-      }
-      player.value.playsinline(playsinline.value)
-    })
-  }
 
   const play = () => {
     return player.value.play()
@@ -52,14 +25,29 @@ export default function(src, poster, caption, nativeSettings, playsinline, optio
   const getRemainTime = () => {
     return player.value.remainingTime()
   }
-  const fullscreen = (value) => {
-    value ? player.value.requestFullscreen() : player.value.exitFullscreen()
-  }
   const isFullscreen = () => {
-    return player.value.isFullscreen()
+    return smartFullscreen.state
   }
   const volume = value => {
     return player.value.volume(value)
+  }
+
+  const init = () => {
+    return new Promise(async(resolve, reject) => {
+      player.value = videojs(video.value, merge({}, {
+        ...nativeSettings,
+        languages: { zh_CN },
+        language: 'zh_CN',
+        fluid: true
+      }, options.value), (p) => {
+        resolve(player.value)
+      })
+      smartFullscreen.value = new SmartFullscreen(player.value, windowFullscreen.value)
+      if (poster.value) {
+        player.value.poster(poster.value)
+      }
+      player.value.playsinline(playsinline.value)
+    })
   }
 
   // 操作区
@@ -81,7 +69,6 @@ export default function(src, poster, caption, nativeSettings, playsinline, optio
     currentTime,
     duration,
     getRemainTime,
-    fullscreen,
     isFullscreen,
     volume
   }
