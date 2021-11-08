@@ -3,12 +3,14 @@
     <ds-video
       ref="player"
       src="https://lf1-cdn-tos.bytescm.com/obj/cdn-static-resource/toutiao/xigua_cdn/xigua_video.mp4"
-      poster="http://192.168.1.43/api/base/resource/view/168406511003983872"
-      caption="http://192.168.1.43/api/base/resource/view/222030015359881216"
+      poster="/1.png"
+      caption="/1.vtt"
       :controls="controls"
       :loop="loop"
       playsinline
-      :options="{ fill: true, fluid: false, playbackRates: [1, 1.5, 2] }" />
+      :options="{ fill: true, fluid: false, playbackRates: [1, 1.5, 2] }"
+      @timeupdate="handleTimeUpdate"
+      @durationchange="handleDurationChange" />
     <div class="settings tw-p-3">
       <div class="tw-mt-4">
         <el-form size="small" label-width="100px" label-position="left" label-suffix="：">
@@ -17,10 +19,14 @@
             <el-button size="small" type="warning" @click="pause">暂停</el-button>
             <el-button size="small" type="danger" @click="stop">停止</el-button>
           </el-form-item>
+          <el-form-item label="进度">
+            <el-slider v-model="currentTime" :min="0" :max="duration" />
+          </el-form-item>
           <el-form-item label="全屏操作">
             <el-radio-group v-model="fullscreenType">
               <el-radio :label="0">真·全屏</el-radio>
               <el-radio :label="1">网页全屏</el-radio>
+              <el-button size="mini" type="primary"  @click="handleFullscreen">全屏 Go</el-button>
             </el-radio-group>
           </el-form-item>
           <el-form-item label="控件栏">
@@ -32,6 +38,9 @@
           <el-form-item label="洗脑循环">
             <el-switch v-model="loop" />
           </el-form-item>
+          <el-form-item label="设置音量">
+            <el-slider v-model="volume" :min="0" :max="1" :step="0.1" />
+          </el-form-item>
         </el-form>
       </div>
     </div>
@@ -39,7 +48,7 @@
 </template>
 
 <script>
-import { ref } from '@vue/composition-api'
+import { ref, onMounted, watch } from '@vue/composition-api'
 
 export default {
   setup() {
@@ -47,6 +56,9 @@ export default {
     const controls = ref(true)
     const loop = ref(false)
     const fullscreenType = ref(0)
+    const volume = ref(0)
+    const duration = ref(0)
+    const currentTime = ref(0)
 
     const play = () => {
       player.value.play()
@@ -63,18 +75,42 @@ export default {
     const fakeFullscreen = () => {
       player.value.player.enterFullWindow()
     }
+    const handleTimeUpdate = () => {
+      currentTime.value = player.value.currentTime()
+    }
+    const handleDurationChange = () => {
+      duration.value = player.value.duration()
+    }
+    const handleFullscreen = () => {
+      fullscreenType.value === 0 ? fullscreen() : fakeFullscreen()
+    }
+
+    onMounted(() => {
+      volume.value = player.value.volume()
+      currentTime.value = player.value.currentTime()
+    })
+
+    watch(volume, (newVal) => {
+      player.value.volume(newVal)
+    })
 
     return {
       player,
       controls,
       loop,
       fullscreenType,
+      volume,
+      duration,
+      currentTime,
 
       play,
       pause,
       stop,
       fullscreen,
-      fakeFullscreen
+      fakeFullscreen,
+      handleTimeUpdate,
+      handleDurationChange,
+      handleFullscreen
     }
   }
 }

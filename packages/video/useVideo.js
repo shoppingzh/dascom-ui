@@ -18,6 +18,18 @@ export default function(src, poster, caption, nativeSettings, playsinline, optio
       }, options.value), (p) => {
         resolve(player.value)
       })
+      const Button = videojs.getComponent('Button')
+      console.log(Button)
+      const btn = new Button(player.value, {
+        text: 'hello',
+        clickHandler: e => {
+          console.log(e)
+        }
+      })
+      console.log(btn)
+      player.value.addChild(btn, {
+        text: '全屏'
+      })
       if (poster.value) {
         player.value.poster(poster.value)
       }
@@ -34,8 +46,8 @@ export default function(src, poster, caption, nativeSettings, playsinline, optio
   const currentTime = value => {
     return player.value.currentTime(value)
   }
-  const duration = value => {
-    return player.value.duration(value)
+  const duration = () => {
+    return player.value.duration()
   }
   const getRemainTime = () => {
     return player.value.remainingTime()
