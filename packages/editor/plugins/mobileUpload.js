@@ -38,7 +38,6 @@ tinymce.PluginManager.add('mobileupload', (editor, url) => {
   }
 
   editor.ui.registry.addButton('camera', {
-    // text: '拍照',
     icon: 'camera',
     onAction: () => {
       chooseFileAndUpload('image', true)
@@ -46,28 +45,24 @@ tinymce.PluginManager.add('mobileupload', (editor, url) => {
   })
   editor.ui.registry.addButton('image', {
     icon: 'picture',
-    // text: '图片',
     onAction: () => {
       chooseFileAndUpload('image', false)
     }
   })
   editor.ui.registry.addButton('camcorder', {
-    // text: '录像',
     icon: 'camcorder',
     onAction: () => {
       chooseFileAndUpload('video', true)
     }
   })
   editor.ui.registry.addButton('video', {
-    // text: '视频',
     icon: 'video',
     onAction: () => {
       chooseFileAndUpload('video', false)
     }
   })
   editor.ui.registry.addButton('audio', {
-    // text: '语音',
-    icon: 'voice',
+    icon: 'file',
     onAction: () => {
       chooseFileAndUpload('audio', true)
     }

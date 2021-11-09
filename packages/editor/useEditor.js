@@ -3,7 +3,7 @@ import tinymce from 'tinymce'
 import { merge } from 'lodash'
 import defaultOptions from './options'
 
-export default function(content, height, placeholder, options) {
+export default function(content, height, placeholder, allowPaste, options) {
   const textarea = ref(null)
   const editor = ref(null)
   const userChange = ref(null) // 是否为用户改变content
@@ -35,6 +35,11 @@ export default function(content, height, placeholder, options) {
           editorIns.on('change keyup undo redo', (e) => {
             userChange.value = true
             content.value = getHtml()
+          })
+          editorIns.on('paste', e => {
+            if (!allowPaste.value) {
+              e.preventDefault()
+            }
           })
         }
       })

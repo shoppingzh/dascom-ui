@@ -1,6 +1,6 @@
 import tinymce from 'tinymce'
-import icons from './icons'
+import { getAll } from 'tinymce-dascom-icons'
 
 tinymce.IconManager.add('dascom', {
-  icons
+  icons: getAll()
 })

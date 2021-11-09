@@ -3,6 +3,7 @@
     <ds-editor
       v-model="value"
       placeholder="请输入内容"
+      :allow-paste="false"
       :height="500"
       :options="{ }" />
     <!-- <div class="tw-py-5">

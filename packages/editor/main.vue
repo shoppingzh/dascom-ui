@@ -14,10 +14,11 @@ export default {
     value: { type: String, default: null },
     height: { type: Number, default: 300 },
     placeholder: { type: String, default: null },
+    allowPaste: { type: Boolean, default: true },
     options: { type: Object, default: () => ({}) }
   },
   setup(props, ctx) {
-    const { value, height, placeholder } = toRefs(props)
+    const { value, height, placeholder, allowPaste } = toRefs(props)
     const content = computed({
       get() {
         return value.value
@@ -26,7 +27,7 @@ export default {
         ctx.emit('input', newVal)
       }
     })
-    const { textarea, init: doInit, getHtml, getText } = useEditor(content, height, placeholder, props.options)
+    const { textarea, init: doInit, getHtml, getText } = useEditor(content, height, placeholder, allowPaste, props.options)
 
     const init = async() => {
       const editor = await doInit()
