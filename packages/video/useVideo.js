@@ -57,6 +57,9 @@ export default function(src, poster, caption, nativeSettings, playsinline, windo
   watch(() => nativeSettings.loop, newVal => {
     player.value.loop(newVal)
   })
+  watch(windowFullscreen, newVal => {
+    smartFullscreen.value && (smartFullscreen.value.windowFullscreen = newVal)
+  })
 
   return {
     player, // video播放器

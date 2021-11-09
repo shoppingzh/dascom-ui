@@ -8,7 +8,7 @@
       :controls="controls"
       :loop="loop"
       playsinline
-      :window-fullscreen="true"
+      :window-fullscreen="fullscreenType === 1"
       :options="{ fill: true, fluid: false, playbackRates: [1, 1.5, 2] }"
       @timeupdate="handleTimeUpdate"
       @durationchange="handleDurationChange" />
@@ -27,7 +27,6 @@
             <el-radio-group v-model="fullscreenType">
               <el-radio :label="0">真·全屏</el-radio>
               <el-radio :label="1">网页全屏</el-radio>
-              <el-button size="mini" type="primary"  @click="handleFullscreen">全屏 Go</el-button>
             </el-radio-group>
           </el-form-item>
           <el-form-item label="控件栏">
